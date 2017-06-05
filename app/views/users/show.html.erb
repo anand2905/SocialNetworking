@@ -1,0 +1,36 @@
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+
+
+
+ <% if logged_in? %>
+<h3>Welcome  <%= @user.f_name  %><%= @user.l_name  %></h3><br>
+
+<h1><%= :MyProfile %></h1>
+<h1>Username: <%= @user.name %></h1>
+
+
+
+
+<table>
+     <tr>
+    <th>Active Friends</th>
+    <th></th>
+        </tr><% @friendships.each do |friend| %>
+    <tr>
+      <td><%= friend.f_name %>  <%= friend.l_name %></td>
+      
+      <td><%= link_to "Send Messages", '#' %></td><br>
+      <td><%= link_to "Unfriend",'#' %></td><br>
+     </tr>
+    <% end %> 
+   </table>
+
+
+
+<p><%= link_to "Find Friends",  user_path %></p>
+
+<%= link_to "Log Out", session_path, :method=> :delete %>
+<% end %> 
